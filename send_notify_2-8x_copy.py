@@ -121,9 +121,9 @@ def is_render_complete(scene):
         
 def render_time(scene):
         print ("Seconds elapsed since the epoch are : ",end="") 
-        print(time.time()-t) 
+        #print(time.time()-t) 
     
-        #bpy.app.handlers.frame_change_post.append(render_time)       
+               
             
 
 classes = ()
@@ -132,11 +132,13 @@ register, unregister = bpy.utils.register_classes_factory(classes)
 def register():
     
     bpy.app.handlers.render_complete.append(is_render_complete)
+    bpy.app.handlers.frame_change_post.append(render_time)
    
      
 def unregister():
    
     bpy.app.handlers.render_complete.remove(is_render_complete)
+    #bpy.app.handlers.frame_change_post.remove(render_time)
     
      
 
